@@ -1,63 +1,340 @@
-/* Browser Fucker CSS - Maximum Visual Chaos */
+/* Browser Fucker CSS - Base Styles for Level Control */
+/* Most chaos effects are now controlled by JavaScript for proper level management */
 
-/* Global flashing background */
-html, body {
-    animation:
-        flash-rainbow 0.1s infinite,
-        shake 0.05s infinite,
-        pulse 0.2s infinite alternate !important;
-    filter: hue-rotate(0deg) saturate(200%) brightness(150%) !important;
-    animation-fill-mode: both !important;
+/* Base keyframes that JavaScript will apply at different levels */
+@keyframes subtle-hue {
+    0% {
+        filter: hue-rotate(0deg) !important;
+    }
+    100% {
+        filter: hue-rotate(360deg) !important;
+    }
 }
 
-/* Rainbow flashing keyframes */
-@keyframes flash-rainbow {
-    0% { background-color: #ff0000 !important; }
-    14% { background-color: #ff7f00 !important; }
-    28% { background-color: #ffff00 !important; }
-    42% { background-color: #00ff00 !important; }
-    57% { background-color: #0000ff !important; }
-    71% { background-color: #4b0082 !important; }
-    85% { background-color: #9400d3 !important; }
-    100% { background-color: #ff0000 !important; }
+@keyframes light-wiggle {
+    0%,
+    100% {
+        transform: rotate(0deg) !important;
+    }
+    50% {
+        transform: rotate(1deg) !important;
+    }
 }
 
-/* Screen shake animation */
+@keyframes flash-colors {
+    0% {
+        background-color: rgba(255, 0, 0, 0.1) !important;
+    }
+    25% {
+        background-color: rgba(0, 255, 0, 0.1) !important;
+    }
+    50% {
+        background-color: rgba(0, 0, 255, 0.1) !important;
+    }
+    75% {
+        background-color: rgba(255, 255, 0, 0.1) !important;
+    }
+    100% {
+        background-color: rgba(255, 0, 255, 0.1) !important;
+    }
+}
+
 @keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg) !important; }
-    10% { transform: translate(-1px, -2px) rotate(-1deg) !important; }
-    20% { transform: translate(-3px, 0px) rotate(1deg) !important; }
-    30% { transform: translate(3px, 2px) rotate(0deg) !important; }
-    40% { transform: translate(1px, -1px) rotate(1deg) !important; }
-    50% { transform: translate(-1px, 2px) rotate(-1deg) !important; }
-    60% { transform: translate(-3px, 1px) rotate(0deg) !important; }
-    70% { transform: translate(3px, 1px) rotate(-1deg) !important; }
-    80% { transform: translate(-1px, -1px) rotate(1deg) !important; }
-    90% { transform: translate(1px, 2px) rotate(0deg) !important; }
-    100% { transform: translate(1px, -2px) rotate(-1deg) !important; }
+    0% {
+        transform: translate(1px, 1px) !important;
+    }
+    25% {
+        transform: translate(-1px, -2px) !important;
+    }
+    50% {
+        transform: translate(-2px, 0px) !important;
+    }
+    75% {
+        transform: translate(2px, 2px) !important;
+    }
+    100% {
+        transform: translate(1px, -1px) !important;
+    }
 }
 
-/* Pulsing effect */
+@keyframes flash-rainbow {
+    0% {
+        background-color: #ff0000 !important;
+    }
+    14% {
+        background-color: #ff7f00 !important;
+    }
+    28% {
+        background-color: #ffff00 !important;
+    }
+    42% {
+        background-color: #00ff00 !important;
+    }
+    57% {
+        background-color: #0000ff !important;
+    }
+    71% {
+        background-color: #4b0082 !important;
+    }
+    85% {
+        background-color: #9400d3 !important;
+    }
+    100% {
+        background-color: #ff0000 !important;
+    }
+}
+
 @keyframes pulse {
-    0% { transform: scale(1) !important; opacity: 1 !important; }
-    100% { transform: scale(1.02) !important; opacity: 0.8 !important; }
+    0% {
+        transform: scale(1) !important;
+        opacity: 1 !important;
+    }
+    100% {
+        transform: scale(1.02) !important;
+        opacity: 0.8 !important;
+    }
 }
 
-/* Spinning hue rotation */
+@keyframes flash-text {
+    0% {
+        color: #ff0000 !important;
+    }
+    20% {
+        color: #00ff00 !important;
+    }
+    40% {
+        color: #0000ff !important;
+    }
+    60% {
+        color: #ffff00 !important;
+    }
+    80% {
+        color: #ff00ff !important;
+    }
+    100% {
+        color: #00ffff !important;
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(-1deg) !important;
+    }
+    25% {
+        transform: rotate(1deg) !important;
+    }
+    50% {
+        transform: rotate(-1deg) !important;
+    }
+    75% {
+        transform: rotate(1deg) !important;
+    }
+    100% {
+        transform: rotate(-1deg) !important;
+    }
+}
+
 @keyframes hue-spin {
-    0% { filter: hue-rotate(0deg) saturate(300%) brightness(200%) !important; }
-    25% { filter: hue-rotate(90deg) saturate(300%) brightness(200%) !important; }
-    50% { filter: hue-rotate(180deg) saturate(300%) brightness(200%) !important; }
-    75% { filter: hue-rotate(270deg) saturate(300%) brightness(200%) !important; }
-    100% { filter: hue-rotate(360deg) saturate(300%) brightness(200%) !important; }
+    0% {
+        filter: hue-rotate(0deg) saturate(300%) brightness(200%) !important;
+    }
+    25% {
+        filter: hue-rotate(90deg) saturate(300%) brightness(200%) !important;
+    }
+    50% {
+        filter: hue-rotate(180deg) saturate(300%) brightness(200%) !important;
+    }
+    75% {
+        filter: hue-rotate(270deg) saturate(300%) brightness(200%) !important;
+    }
+    100% {
+        filter: hue-rotate(360deg) saturate(300%) brightness(200%) !important;
+    }
 }
 
-/* Fuck with all elements */
-* {
-    animation:
-        flash-text 0.15s infinite,
-        wiggle 0.08s infinite,
-        hue-spin 1s infinite linear !important;
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) !important;
+    }
+    100% {
+        transform: rotate(360deg) !important;
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0) scale(1) !important;
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1) !important;
+    }
+}
+
+@keyframes float-around {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1) !important;
+    }
+    25% {
+        transform: translate(50px, -30px) rotate(90deg) scale(1.5) !important;
+    }
+    50% {
+        transform: translate(-30px, 20px) rotate(180deg) scale(0.5) !important;
+    }
+    75% {
+        transform: translate(20px, 40px) rotate(270deg) scale(1.2) !important;
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg) scale(1) !important;
+    }
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0) !important;
+        opacity: 1 !important;
+    }
+    100% {
+        transform: scale(10) !important;
+        opacity: 0 !important;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        transform: scale(1) !important;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) !important;
+    }
+}
+
+@keyframes flash-screen {
+    0% {
+        background: radial-gradient(
+            circle,
+            rgba(255, 0, 0, 0.5),
+            transparent
+        ) !important;
+    }
+    25% {
+        background: radial-gradient(
+            circle,
+            rgba(0, 255, 0, 0.5),
+            transparent
+        ) !important;
+    }
+    50% {
+        background: radial-gradient(
+            circle,
+            rgba(0, 0, 255, 0.5),
+            transparent
+        ) !important;
+    }
+    75% {
+        background: radial-gradient(
+            circle,
+            rgba(255, 255, 0, 0.5),
+            transparent
+        ) !important;
+    }
+    100% {
+        background: radial-gradient(
+            circle,
+            rgba(255, 0, 255, 0.5),
+            transparent
+        ) !important;
+    }
+}
+
+/* Styles for chaos elements created by JavaScript */
+.browser-fucker-chaos {
+    pointer-events: none !important;
+    z-index: 999999 !important;
+}
+
+#browser-fucker-flash {
+    pointer-events: none !important;
+    z-index: 999998 !important;
+}
+
+/* Ensure chaos elements are always visible */
+.browser-fucker-chaos,
+#browser-fucker-flash {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Custom cursor for chaos mode */
+.chaos-cursor * {
+    cursor:
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="8" fill="red"/></svg>'),
+        auto !important;
+}
+
+/* Hide scrollbars at maximum chaos to prevent confusion */
+.chaos-level-10 {
+    overflow: hidden !important;
+}
+
+/* Selection styling for chaos mode */
+.chaos-active ::selection {
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #00ff00,
+        #0000ff,
+        #ffff00
+    ) !important;
+    color: #ffffff !important;
+}
+
+/* Override any attempts to disable chaos animations */
+.chaos-active *[style*="animation: none"],
+.chaos-active *[style*="animation:none"] {
+    animation: flash-rainbow 0.5s infinite !important;
+}
+
+/* Prevent layout shifts during chaos */
+.chaos-active * {
+    box-sizing: border-box !important;
+}
+
+/* Ensure text remains somewhat readable at lower levels */
+.chaos-level-1 *,
+.chaos-level-2 *,
+.chaos-level-3 * {
+    text-shadow: none !important;
+}
+
+.chaos-level-4 *,
+.chaos-level-5 * {
+    text-shadow: 0 0 2px rgba(255, 0, 0, 0.3) !important;
+}
+
+/* Progressive visual intensity */
+.chaos-level-6 * {
+    text-shadow: 0 0 3px #ff0000 !important;
+}
+
+.chaos-level-7 * {
+    text-shadow:
+        0 0 5px #ff0000,
+        0 0 8px #00ff00 !important;
+}
+
+.chaos-level-8 * {
+    text-shadow:
+        0 0 5px #ff0000,
+        0 0 10px #00ff00,
+        0 0 15px #0000ff !important;
+}
+
+.chaos-level-9 *,
+.chaos-level-10 * {
     text-shadow:
         0 0 5px #ff0000,
         0 0 10px #00ff00,
@@ -66,190 +343,4 @@ html, body {
     box-shadow:
         0 0 10px #ff00ff,
         inset 0 0 10px #00ffff !important;
-}
-
-/* Text flashing */
-@keyframes flash-text {
-    0% { color: #ff0000 !important; }
-    20% { color: #00ff00 !important; }
-    40% { color: #0000ff !important; }
-    60% { color: #ffff00 !important; }
-    80% { color: #ff00ff !important; }
-    100% { color: #00ffff !important; }
-}
-
-/* Wiggle animation for all elements */
-@keyframes wiggle {
-    0% { transform: rotate(-1deg) !important; }
-    25% { transform: rotate(1deg) !important; }
-    50% { transform: rotate(-1deg) !important; }
-    75% { transform: rotate(1deg) !important; }
-    100% { transform: rotate(-1deg) !important; }
-}
-
-/* Extra chaos for specific elements */
-h1, h2, h3, h4, h5, h6 {
-    animation:
-        flash-rainbow 0.05s infinite,
-        bounce 0.3s infinite,
-        hue-spin 0.5s infinite linear !important;
-    transform-origin: center !important;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0) scale(1) !important; }
-    50% { transform: translateY(-10px) scale(1.1) !important; }
-}
-
-/* Images go crazy */
-img {
-    animation:
-        spin 0.5s infinite linear,
-        flash-rainbow 0.1s infinite,
-        scale-crazy 0.2s infinite alternate !important;
-    filter: hue-rotate(180deg) saturate(500%) brightness(200%) contrast(200%) !important;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg) !important; }
-    100% { transform: rotate(360deg) !important; }
-}
-
-@keyframes scale-crazy {
-    0% { transform: scale(0.8) !important; }
-    100% { transform: scale(1.2) !important; }
-}
-
-/* Links become disco */
-a {
-    animation:
-        flash-rainbow 0.08s infinite,
-        wobble 0.15s infinite !important;
-    text-decoration: none !important;
-    font-weight: bold !important;
-}
-
-@keyframes wobble {
-    0% { transform: skew(-5deg) !important; }
-    25% { transform: skew(5deg) !important; }
-    50% { transform: skew(-5deg) !important; }
-    75% { transform: skew(5deg) !important; }
-    100% { transform: skew(-5deg) !important; }
-}
-
-/* Buttons go insane */
-button, input[type="button"], input[type="submit"] {
-    animation:
-        flash-rainbow 0.06s infinite,
-        jiggle 0.1s infinite,
-        scale-crazy 0.3s infinite alternate !important;
-    border: 3px solid #ff00ff !important;
-    cursor: crosshair !important;
-}
-
-@keyframes jiggle {
-    0% { transform: translate(0) !important; }
-    25% { transform: translate(-2px, 2px) !important; }
-    50% { transform: translate(2px, -2px) !important; }
-    75% { transform: translate(-2px, -2px) !important; }
-    100% { transform: translate(2px, 2px) !important; }
-}
-
-/* Form inputs become psychedelic */
-input, textarea, select {
-    animation:
-        flash-rainbow 0.12s infinite,
-        vibrate 0.05s infinite !important;
-    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00) !important;
-    background-size: 400% 400% !important;
-    animation-name:
-        flash-rainbow,
-        vibrate,
-        gradient-shift !important;
-    animation-duration: 0.12s, 0.05s, 2s !important;
-    animation-iteration-count: infinite !important;
-}
-
-@keyframes vibrate {
-    0% { transform: translate(0) !important; }
-    25% { transform: translate(0.5px, 0.5px) !important; }
-    50% { transform: translate(-0.5px, 0.5px) !important; }
-    75% { transform: translate(0.5px, -0.5px) !important; }
-    100% { transform: translate(-0.5px, -0.5px) !important; }
-}
-
-@keyframes gradient-shift {
-    0% { background-position: 0% 50% !important; }
-    50% { background-position: 100% 50% !important; }
-    100% { background-position: 0% 50% !important; }
-}
-
-/* Divs become chaos */
-div {
-    animation:
-        float-crazy 2s infinite ease-in-out,
-        flash-border 0.1s infinite !important;
-    border: 2px solid transparent !important;
-}
-
-@keyframes float-crazy {
-    0%, 100% { transform: translateY(0) rotate(0deg) !important; }
-    33% { transform: translateY(-5px) rotate(1deg) !important; }
-    66% { transform: translateY(5px) rotate(-1deg) !important; }
-}
-
-@keyframes flash-border {
-    0% { border-color: #ff0000 !important; }
-    25% { border-color: #00ff00 !important; }
-    50% { border-color: #0000ff !important; }
-    75% { border-color: #ffff00 !important; }
-    100% { border-color: #ff00ff !important; }
-}
-
-/* Make scrollbars crazy */
-::-webkit-scrollbar {
-    width: 20px !important;
-    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff) !important;
-    animation: flash-rainbow 0.1s infinite !important;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #ffff00, #ff00ff, #00ffff) !important;
-    animation: flash-rainbow 0.08s infinite !important;
-    border-radius: 10px !important;
-}
-
-/* Cursor becomes chaotic */
-* {
-    cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><circle cx="16" cy="16" r="8" fill="red"/></svg>'), auto !important;
-}
-
-/* Selection becomes rainbow */
-::selection {
-    background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00) !important;
-    color: #ffffff !important;
-    animation: flash-rainbow 0.1s infinite !important;
-}
-
-/* Hide nothing - everything must be visible for maximum chaos */
-*[hidden], .hidden, [style*="display: none"], [style*="display:none"] {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    animation: flash-rainbow 0.1s infinite !important;
-}
-
-/* Override any attempts to stop the madness */
-*[style*="animation: none"], *[style*="animation:none"] {
-    animation: flash-rainbow 0.1s infinite, shake 0.05s infinite !important;
-}
-
-/* Final chaos - pseudo elements */
-*::before, *::after {
-    content: "🔥💀🔥" !important;
-    color: #ff0000 !important;
-    animation: flash-rainbow 0.1s infinite !important;
-    font-size: 12px !important;
-    position: absolute !important;
-    z-index: 9999 !important;
 }
