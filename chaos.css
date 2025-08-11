@@ -1,4 +1,4 @@
-/* Browser Fucker CSS - Base Styles for Level Control */
+/* Browser Blaster CSS - Base Styles for Level Control */
 /* Most chaos effects are now controlled by JavaScript for proper level management */
 
 /* Base keyframes that JavaScript will apply at different levels */
@@ -250,19 +250,19 @@
 }
 
 /* Styles for chaos elements created by JavaScript */
-.browser-fucker-chaos {
+.browser-blaster-chaos {
     pointer-events: none !important;
     z-index: 999999 !important;
 }
 
-#browser-fucker-flash {
+#browser-blaster-flash {
     pointer-events: none !important;
     z-index: 999998 !important;
 }
 
 /* Ensure chaos elements are always visible */
-.browser-fucker-chaos,
-#browser-fucker-flash {
+.browser-blaster-chaos,
+#browser-blaster-flash {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;

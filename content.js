@@ -1,4 +1,4 @@
-// Browser Fucker Content Script - Maximum JavaScript Chaos
+// Browser Blaster Content Script - Maximum JavaScript Chaos
 (function () {
   "use strict";
 
@@ -13,7 +13,7 @@
     const chaosCount = count;
     for (let i = 0; i < chaosCount; i++) {
       const chaosElement = document.createElement("div");
-      chaosElement.className = "browser-fucker-chaos";
+      chaosElement.className = "browser-blaster-chaos";
       chaosElement.style.cssText = `
                 position: fixed !important;
                 width: 20px !important;
@@ -54,7 +54,7 @@
   // Create screen flash overlay
   function createScreenFlash() {
     const flashOverlay = document.createElement("div");
-    flashOverlay.id = "browser-fucker-flash";
+    flashOverlay.id = "browser-blaster-flash";
     flashOverlay.style.cssText = `
             position: fixed !important;
             top: 0 !important;
@@ -149,7 +149,7 @@
         el.tagName !== "SCRIPT" &&
         el.tagName !== "STYLE" &&
         el.tagName !== "META" &&
-        !el.classList.contains("browser-fucker-chaos"),
+        !el.classList.contains("browser-blaster-chaos"),
     );
 
     chaosElements.forEach((el) => {
@@ -294,7 +294,7 @@
         `;
 
     const messages = [
-      "🔥 BROWSER FUCKED! 🔥",
+      "🔥 BROWSER BLASTED! 🔥",
       "💀 CHAOS MODE! 💀",
       "⚡ VISUAL OVERLOAD! ⚡",
       "🌈 RAINBOW HELL! 🌈",
@@ -344,7 +344,7 @@
 
           // Create explosion effect at click
           const explosion = document.createElement("div");
-          explosion.className = "browser-fucker-chaos";
+          explosion.className = "browser-blaster-chaos";
           explosion.style.cssText = `
                     position: fixed !important;
                     left: ${e.clientX - 25}px !important;
@@ -435,7 +435,7 @@
     createFloatingChaos(200);
 
     const konamiMessage = document.createElement("div");
-    konamiMessage.className = "browser-fucker-chaos";
+    konamiMessage.className = "browser-blaster-chaos";
     konamiMessage.style.cssText = `
             position: fixed !important;
             top: 50% !important;
@@ -469,7 +469,7 @@
       return;
     }
 
-    console.log("🔥💀🔥 BROWSER FUCKER LOADED 🔥💀🔥");
+    console.log("🔥💀🔥 BROWSER BLASTER LOADED 🔥💀🔥");
 
     // Initialize with saved settings
     updateChaosIntensity();
@@ -494,7 +494,7 @@
 
     // Remove chaos elements
     document
-      .querySelectorAll(".browser-fucker-chaos, #browser-fucker-flash")
+      .querySelectorAll(".browser-blaster-chaos, #browser-blaster-flash")
       .forEach((el) => {
         if (el.parentNode) {
           el.parentNode.removeChild(el);
@@ -517,7 +517,7 @@
     if (!chaosActive || chaosLevel === 0) {
       // Remove all chaos elements
       document
-        .querySelectorAll(".browser-fucker-chaos, #browser-fucker-flash")
+        .querySelectorAll(".browser-blaster-chaos, #browser-blaster-flash")
         .forEach((el) => {
           if (el.parentNode) {
             el.parentNode.removeChild(el);

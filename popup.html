@@ -1,209 +1,285 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browser Fucker Control</title>
-    <style>
-        body {
-            width: 300px;
-            height: 400px;
-            margin: 0;
-            padding: 20px;
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00);
-            background-size: 400% 400%;
-            animation: gradient-shift 2s ease infinite;
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-            overflow: hidden;
-        }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Browser Blaster Control</title>
+        <style>
+            body {
+                width: 300px;
+                height: 400px;
+                margin: 0;
+                padding: 20px;
+                font-family: "Courier New", monospace;
+                background: linear-gradient(
+                    45deg,
+                    #ff0000,
+                    #00ff00,
+                    #0000ff,
+                    #ffff00
+                );
+                background-size: 400% 400%;
+                animation: gradient-shift 2s ease infinite;
+                color: white;
+                text-shadow: 2px 2px 4px #000000;
+                overflow: hidden;
+            }
 
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+            @keyframes gradient-shift {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 100%;
-            animation: shake 0.5s infinite;
-        }
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100%;
+                animation: shake 0.5s infinite;
+            }
 
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-2px); }
-            50% { transform: translateX(2px); }
-            75% { transform: translateX(-2px); }
-            100% { transform: translateX(0); }
-        }
+            @keyframes shake {
+                0% {
+                    transform: translateX(0);
+                }
+                25% {
+                    transform: translateX(-2px);
+                }
+                50% {
+                    transform: translateX(2px);
+                }
+                75% {
+                    transform: translateX(-2px);
+                }
+                100% {
+                    transform: translateX(0);
+                }
+            }
 
-        h1 {
-            font-size: 24px;
-            text-align: center;
-            margin: 0 0 20px 0;
-            animation: flash-text 0.5s infinite;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+            h1 {
+                font-size: 24px;
+                text-align: center;
+                margin: 0 0 20px 0;
+                animation: flash-text 0.5s infinite;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+            }
 
-        @keyframes flash-text {
-            0% { color: #ff0000; }
-            25% { color: #00ff00; }
-            50% { color: #0000ff; }
-            75% { color: #ffff00; }
-            100% { color: #ff00ff; }
-        }
+            @keyframes flash-text {
+                0% {
+                    color: #ff0000;
+                }
+                25% {
+                    color: #00ff00;
+                }
+                50% {
+                    color: #0000ff;
+                }
+                75% {
+                    color: #ffff00;
+                }
+                100% {
+                    color: #ff00ff;
+                }
+            }
 
-        .skull {
-            font-size: 48px;
-            animation: spin 2s linear infinite;
-            margin: 20px 0;
-        }
+            .skull {
+                font-size: 48px;
+                animation: spin 2s linear infinite;
+                margin: 20px 0;
+            }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
 
-        .button {
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            border: 3px solid #ffff00;
-            color: #000000;
-            font-weight: bold;
-            font-size: 16px;
-            padding: 15px 25px;
-            margin: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            animation: pulse 1s infinite;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 0 20px #ff00ff;
-        }
+            .button {
+                background: linear-gradient(45deg, #ff00ff, #00ffff);
+                border: 3px solid #ffff00;
+                color: #000000;
+                font-weight: bold;
+                font-size: 16px;
+                padding: 15px 25px;
+                margin: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.3s;
+                animation: pulse 1s infinite;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                box-shadow: 0 0 20px #ff00ff;
+            }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
 
-        .button:hover {
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 30px #00ffff;
-        }
+            .button:hover {
+                background: linear-gradient(45deg, #00ffff, #ff00ff);
+                transform: scale(1.1) rotate(5deg);
+                box-shadow: 0 0 30px #00ffff;
+            }
 
-        .button:active {
-            transform: scale(0.95) rotate(-5deg);
-        }
+            .button:active {
+                transform: scale(0.95) rotate(-5deg);
+            }
 
-        .status {
-            margin: 20px 0;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 2px solid #ff00ff;
-            border-radius: 5px;
-            text-align: center;
-            animation: flash-border 1s infinite;
-        }
+            .status {
+                margin: 20px 0;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.5);
+                border: 2px solid #ff00ff;
+                border-radius: 5px;
+                text-align: center;
+                animation: flash-border 1s infinite;
+            }
 
-        @keyframes flash-border {
-            0% { border-color: #ff00ff; }
-            25% { border-color: #00ffff; }
-            50% { border-color: #ffff00; }
-            75% { border-color: #ff0000; }
-            100% { border-color: #00ff00; }
-        }
+            @keyframes flash-border {
+                0% {
+                    border-color: #ff00ff;
+                }
+                25% {
+                    border-color: #00ffff;
+                }
+                50% {
+                    border-color: #ffff00;
+                }
+                75% {
+                    border-color: #ff0000;
+                }
+                100% {
+                    border-color: #00ff00;
+                }
+            }
 
-        .warning {
-            font-size: 12px;
-            text-align: center;
-            margin-top: 20px;
-            animation: blink 1s infinite;
-            background: rgba(255, 0, 0, 0.3);
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ff0000;
-        }
+            .warning {
+                font-size: 12px;
+                text-align: center;
+                margin-top: 20px;
+                animation: blink 1s infinite;
+                background: rgba(255, 0, 0, 0.3);
+                padding: 10px;
+                border-radius: 5px;
+                border: 1px solid #ff0000;
+            }
 
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.5; }
-        }
+            @keyframes blink {
+                0%,
+                50% {
+                    opacity: 1;
+                }
+                51%,
+                100% {
+                    opacity: 0.5;
+                }
+            }
 
-        .chaos-level {
-            margin: 15px 0;
-            text-align: center;
-        }
+            .chaos-level {
+                margin: 15px 0;
+                text-align: center;
+            }
 
-        .chaos-slider {
-            width: 200px;
-            height: 10px;
-            background: linear-gradient(90deg, #00ff00, #ffff00, #ff0000);
-            border-radius: 5px;
-            outline: none;
-            margin: 10px 0;
-        }
+            .chaos-slider {
+                width: 200px;
+                height: 10px;
+                background: linear-gradient(90deg, #00ff00, #ffff00, #ff0000);
+                border-radius: 5px;
+                outline: none;
+                margin: 10px 0;
+            }
 
-        .fire-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 165, 0, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.2) 0%, transparent 50%);
-            animation: fire-flicker 0.5s infinite alternate;
-        }
+            .fire-effect {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                background:
+                    radial-gradient(
+                        circle at 20% 80%,
+                        rgba(255, 0, 0, 0.2) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 80% 20%,
+                        rgba(255, 165, 0, 0.2) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        circle at 40% 40%,
+                        rgba(255, 255, 0, 0.2) 0%,
+                        transparent 50%
+                    );
+                animation: fire-flicker 0.5s infinite alternate;
+            }
 
-        @keyframes fire-flicker {
-            0% { opacity: 0.8; }
-            100% { opacity: 1; }
-        }
-    </style>
-</head>
-<body>
-    <div class="fire-effect"></div>
-    <div class="container">
-        <h1>🔥 Browser Fucker 🔥</h1>
+            @keyframes fire-flicker {
+                0% {
+                    opacity: 0.8;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="fire-effect"></div>
+        <div class="container">
+            <h1>🔥 Browser Blaster 🔥</h1>
 
-        <div class="skull">💀</div>
+            <div class="skull">💀</div>
 
-        <div class="status" id="status">
-            <strong>STATUS: CHAOS ACTIVE</strong>
+            <div class="status" id="status">
+                <strong>STATUS: CHAOS ACTIVE</strong>
+            </div>
+
+            <div class="chaos-level">
+                <label for="chaosLevel">Chaos Level:</label>
+                <input
+                    type="range"
+                    id="chaosLevel"
+                    class="chaos-slider"
+                    min="1"
+                    max="10"
+                    value="10"
+                />
+                <div id="chaosValue">MAXIMUM DESTRUCTION</div>
+            </div>
+
+            <button class="button" id="toggleChaos">🎪 TOGGLE CHAOS 🎪</button>
+
+            <button class="button" id="superChaos">⚡ SUPER CHAOS ⚡</button>
+
+            <button class="button" id="nukePage">💥 NUKE PAGE 💥</button>
+
+            <div class="warning">
+                ⚠️ WARNING: May cause seizures, headaches, and temporary
+                insanity! Use responsibly! ⚠️
+            </div>
         </div>
 
-        <div class="chaos-level">
-            <label for="chaosLevel">Chaos Level:</label>
-            <input type="range" id="chaosLevel" class="chaos-slider" min="1" max="10" value="10">
-            <div id="chaosValue">MAXIMUM DESTRUCTION</div>
-        </div>
-
-        <button class="button" id="toggleChaos">
-            🎪 TOGGLE CHAOS 🎪
-        </button>
-
-        <button class="button" id="superChaos">
-            ⚡ SUPER CHAOS ⚡
-        </button>
-
-        <button class="button" id="nukePage">
-            💥 NUKE PAGE 💥
-        </button>
-
-        <div class="warning">
-            ⚠️ WARNING: May cause seizures, headaches, and temporary insanity! Use responsibly! ⚠️
-        </div>
-    </div>
-
-    <script src="popup.js"></script>
-</body>
+        <script src="popup.js"></script>
+    </body>
 </html>

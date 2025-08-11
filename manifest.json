@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Browser Fucker",
+  "name": "Browser Blaster",
   "version": "1.0",
-  "description": "Fucks your browser with flashing colors and visual chaos",
+  "description": "Blasts your browser with flashing colors and visual chaos",
   "permissions": ["activeTab", "storage", "tabs"],
   "host_permissions": ["<all_urls>"],
   "content_scripts": [

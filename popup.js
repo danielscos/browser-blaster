@@ -1,4 +1,4 @@
-// Browser Fucker Popup Controls
+// Browser Blaster Popup Controls
 document.addEventListener("DOMContentLoaded", function () {
   const toggleButton = document.getElementById("toggleChaos");
   const superChaosButton = document.getElementById("superChaos");
