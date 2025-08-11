@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Extension Icons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .icon-container {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+        }
+        .icon {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00);
+            background-size: 400% 400%;
+            animation: gradient-shift 2s ease infinite;
+            border-radius: 20%;
+            border: 2px solid #000;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .icon::before {
+            content: "💀";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.6em;
+            animation: spin 2s linear infinite;
+        }
+        .icon::after {
+            content: "🔥";
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            font-size: 0.3em;
+            animation: flash 0.5s infinite;
+        }
+        .icon16 { width: 16px; height: 16px; }
+        .icon32 { width: 32px; height: 32px; }
+        .icon48 { width: 48px; height: 48px; }
+        .icon128 { width: 128px; height: 128px; }
+
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .instructions {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h1>🔥 Browser Fucker Extension Icons 🔥</h1>
+        <p>This page generates the icon files for the Browser Fucker Chrome extension.</p>
+        <p>Right-click on each canvas below and "Save image as..." with the corresponding filename:</p>
+        <ul>
+            <li>icon16.png (16x16)</li>
+            <li>icon32.png (32x32)</li>
+            <li>icon48.png (48x48)</li>
+            <li>icon128.png (128x128)</li>
+        </ul>
+    </div>
+
+    <div class="icon-container">
+        <h3>16x16</h3>
+        <canvas id="canvas16" width="16" height="16"></canvas>
+    </div>
+
+    <div class="icon-container">
+        <h3>32x32</h3>
+        <canvas id="canvas32" width="32" height="32"></canvas>
+    </div>
+
+    <div class="icon-container">
+        <h3>48x48</h3>
+        <canvas id="canvas48" width="48" height="48"></canvas>
+    </div>
+
+    <div class="icon-container">
+        <h3>128x128</h3>
+        <canvas id="canvas128" width="128" height="128"></canvas>
+    </div>
+
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#ff0000');
+            gradient.addColorStop(0.25, '#ff7f00');
+            gradient.addColorStop(0.5, '#ffff00');
+            gradient.addColorStop(0.75, '#00ff00');
+            gradient.addColorStop(1, '#0000ff');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+
+            // Add border
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = Math.max(1, size / 32);
+            ctx.strokeRect(0, 0, size, size);
+
+            // Add skull emoji (simplified as circle and dots for smaller sizes)
+            ctx.fillStyle = '#ffffff';
+            const centerX = size / 2;
+            const centerY = size / 2;
+
+            if (size >= 32) {
+                // Draw skull shape
+                ctx.beginPath();
+                ctx.arc(centerX, centerY - size * 0.1, size * 0.25, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Eye sockets
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.arc(centerX - size * 0.1, centerY - size * 0.15, size * 0.06, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(centerX + size * 0.1, centerY - size * 0.15, size * 0.06, 0, 2 * Math.PI);
+                ctx.fill();
+
+                // Nose
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY - size * 0.05);
+                ctx.lineTo(centerX - size * 0.03, centerY + size * 0.05);
+                ctx.lineTo(centerX + size * 0.03, centerY + size * 0.05);
+                ctx.closePath();
+                ctx.fill();
+            } else {
+                // Simplified version for smaller sizes
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, size * 0.3, 0, 2 * Math.PI);
+                ctx.fill();
+
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.arc(centerX - size * 0.1, centerY - size * 0.05, size * 0.05, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(centerX + size * 0.1, centerY - size * 0.05, size * 0.05, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+
+            // Add fire effect (red/orange dots in corners)
+            ctx.fillStyle = '#ff4500';
+            for (let i = 0; i < 4; i++) {
+                const x = (i % 2) * (size - size * 0.1) + size * 0.05;
+                const y = Math.floor(i / 2) * (size - size * 0.1) + size * 0.05;
+                ctx.beginPath();
+                ctx.arc(x, y, size * 0.03, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+
+            // Add chaos pattern overlay
+            ctx.globalAlpha = 0.3;
+            ctx.fillStyle = '#ff00ff';
+            for (let i = 0; i < size / 4; i++) {
+                const x = Math.random() * size;
+                const y = Math.random() * size;
+                ctx.beginPath();
+                ctx.arc(x, y, 1, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+        }
+
+        // Generate all icons
+        createIcon('canvas16', 16);
+        createIcon('canvas32', 32);
+        createIcon('canvas48', 48);
+        createIcon('canvas128', 128);
+
+        // Auto-download function (optional)
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Add download buttons
+        document.body.innerHTML += `
+            <div style="margin-top: 20px; text-align: center;">
+                <h3>Quick Download (right-click and save target as...):</h3>
+                <button onclick="downloadCanvas('canvas16', 'icon16.png')">Download 16x16</button>
+                <button onclick="downloadCanvas('canvas32', 'icon32.png')">Download 32x32</button>
+                <button onclick="downloadCanvas('canvas48', 'icon48.png')">Download 48x48</button>
+                <button onclick="downloadCanvas('canvas128', 'icon128.png')">Download 128x128</button>
+            </div>
+        `;
+    </script>
+</body>
+</html>
